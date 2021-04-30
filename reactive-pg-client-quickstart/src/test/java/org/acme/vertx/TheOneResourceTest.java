@@ -38,9 +38,6 @@ public class TheOneResourceTest {
 
     @BeforeEach
     public void init() {
-        System.out.println("Fly");
-        Arrays.stream(flyway.info().all()).forEach(b -> System.out.println(b.getScript()));
-        System.out.println("Away");
         flyway.clean();
         flyway.migrate();
 

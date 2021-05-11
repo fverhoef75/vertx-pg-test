@@ -45,10 +45,7 @@ public class TheOneResource {
                                 template.getSubject(), template.getPlain(), template.getHtml()), ar1 -> {
                             if (ar1.succeeded()) {
                                 getTemplate(transaction,
-                                        t -> {
-                                            result.complete(t);
-                                            transaction.commit();
-                                        },
+                                        t -> transaction.commit(r -> result.complete(t)),
                                         ex -> transaction.rollback());
                             } else {
                                 transaction.rollback();
